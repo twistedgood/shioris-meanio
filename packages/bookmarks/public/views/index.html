@@ -1,27 +1,37 @@
-<div class="" data-ng-controller="BookmarksController">
-  <h1>Example view from your new awesome package</h1>
-  <h2>Package: {{package.name}}</h2>
-  <ol>
-    <li>
-      <a href="bookmarks/example/anyone">Server route that anyone can access</a>
+<div class="" data-ng-controller="BookmarksController" data-ng-init="find()">
+
+  <h3>New</h3>
+  <form>
+    <div class="input-group">
+      <input class="form-control" data-ng-model="url">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" data-ng-click="create()">
+          <i class="glyphicon glyphicon-plus"></i>
+        </button>
+      </span>
+    </div>
+  </form>
+  <h3>Shioris</h3>
+  <form>
+    <div class="input-group">
+      <input class="form-control" data-ng-model="searchTerm">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" data-ng-click="search()">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </span>
+    </div>
+  </form>
+  <ul class="list-group">
+    <li class="list-group-item" data-ng-repeat="bookmark in bookmarks">
+      <a href="{{bookmark.url}}" target="_blank">
+        <img src="http://www.google.com/s2/favicons?domain={{bookmark.url}}">
+        {{bookmark.title}} - {{bookmark.url}}
+      </a>
+      <a class="pull-right" data-ng-click="remove(bookmark);">
+        <i class="glyphicon glyphicon-trash"></i>
+      </a>
     </li>
-    <li>
-      <a href="bookmarks/example/auth">Server route that requires authentication</a>
-    </li>
-    <li>
-      <a href="bookmarks/example/admin">Server route that requires admin user</a>
-    </li>
-    <li>
-      <a href="bookmarks/example/render">Raw Html rendering example from using swig</a>
-    </li>
-  </ol>
-  <h3><img src="/bookmarks/assets/img/logo.png" /></h3>
-  </br>
-  <p class="alert alert-info">You can find your package in /packages/bookmarks</p>
-  </br>
-  <p class="alert alert-warning">MEAN versions prior to 0.3.2 will be in /node_modules/bookmarks</p>
-  </br>
-  <h3><a href="http://www.mean.io/#!/docs">Documentation</a></h3>
-  </br>
+  </ul>
 </div>
 
