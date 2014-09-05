@@ -1,0 +1,21 @@
+<section data-ng-controller="MemosController" data-ng-init="find()">
+  <h2>Memos</h2>
+  <ul class="list-group">
+    <li class="list-group-item" data-ng-repeat="memo in memos">
+      <div>
+        <a data-ui-sref="view({memoId: memo._id})">{{memo.title}}</a>
+      </div>
+      <span>{{memo.created | date:'medium'}}</span> /
+      <span>{{memo.user.name}}</span>
+      <span data-ng-if="hasAuthorization(memo)">
+        <a class="btn" data-ui-sref="edit(memoId: {memo._id})">
+          <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove(memo);">
+          <i class="glyphicon glyphicon-trash"></i>
+        </a>
+      </span>
+    </li>
+  </ul>
+  <h1 data-ng-hide="!memos || memos.length">No memos yet. <br> Why don't you <a data-ui-sref="create">Create One</a>?</h1>
+</section>

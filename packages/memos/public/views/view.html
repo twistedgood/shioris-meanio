@@ -1,0 +1,16 @@
+<section data-ng-controller="MemosController" data-ng-init="findOne()">
+  <div class="pull-right">
+    <span>{{memo.created | date:'medium'}}</span> /
+    <span>{{memo.user.name}}</span>
+ </div>
+  <h2>{{memo.title}}</h2>
+  <div data-ng-if="hasAuthorization(memo)">
+    <a class="btn" ui-sref="edit({memoId: memo._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn" data-ng-click="remove(memo);">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div marked="memo.content"></div>
+</section>

@@ -1,0 +1,35 @@
+<section data-ng-controller="MemosController">
+  <form name="memoForm" class="form-horizontal" role="form" data-ng-submit="create(memoForm.$valid)" novalidate>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group" ng-class="{ 'has-error' : submitted && memoForm.title.$invalid }">
+          <input name="title" type="text" class="form-control" data-ng-model="title" id="title" placeholder="Title" required>
+          <div ng-show="submitted && memoForm.title.$invalid" class="help-block">
+            <p ng-show="memoForm.title.$error.required">Title is required</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group" ng-class="{ 'has-error' : submitted && memoForm.content.$invalid }">
+          <textarea name="content" data-ng-model="content" id="content" cols="30" rows="16" placeholder="Content" class="form-control" required></textarea>
+          <div ng-show="submitted && memoForm.content.$invalid" class="help-block">
+            <p ng-show="memoForm.content.$error.required">Content is required</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button mean-token="'edit-submit'" type="submit" class="btn btn-info">Submit</button>
+          <a class="btn btn-default" data-ui-sref="list">Cancel</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="panel panel-default" style="height:400px; overflow-y:scroll;">
+          <div class="panel-body" style="padding-top:0;">
+            <div marked="content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
